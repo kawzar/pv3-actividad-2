@@ -17,6 +17,8 @@ func _physics_process(_delta):
 		motion += Vector2(1, 0)
 	if (Input.is_action_just_pressed("shoot")):
 		fire()
+	if (Input.is_action_just_pressed("ui_cancel")):
+		kill()
 	
 	motion = motion.normalized()*MOTION_SPEED
 	motion = move_and_slide(motion)
@@ -35,4 +37,4 @@ func kill():
 
 func _on_Area2D_body_entered(body):
 	if "Enemy" in body.name:
-		kill() # Replace with function body.
+		kill() 

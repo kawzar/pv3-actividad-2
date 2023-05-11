@@ -1,4 +1,6 @@
 extends RigidBody2D
 
 func _on_Bullet_body_entered(body):
-	queue_free()
+	
+	if "TileSet" in body.name:
+		queue_free()

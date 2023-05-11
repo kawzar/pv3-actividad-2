@@ -3,7 +3,7 @@ extends KinematicBody2D
 export (int)var MOTION_SPEED = 160 # Pixels/second
 export (int)var bullet_speed = 1000
 var bullet = preload("res://Bullet.tscn")
-d
+
 func _physics_process(_delta):
 	var motion = Vector2()
 	
@@ -28,3 +28,11 @@ func fire():
 	bullet_instance.rotation = rotation_degrees
 	bullet_instance.apply_impulse(Vector2(), Vector2(bullet_speed,0).rotated(rotation))
 	get_tree().root.call_deferred("add_child", bullet_instance)
+	
+func kill():
+	get_tree().reload_current_scene()
+
+
+func _on_Area2D_body_entered(body):
+	if "Enemy" in body.name:
+		kill() # Replace with function body.

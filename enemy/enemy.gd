@@ -1,10 +1,9 @@
-extends RigidBody2D
+extends KinematicBody2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var motion = Vector2()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _physics_process(delta):
+	var player = get_parent().get_node("player")
+	position += (player.position - position) / 50
+	look_at(player.position)
+	move_and_collide(motion)

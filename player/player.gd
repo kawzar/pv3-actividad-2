@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 export (int)var MOTION_SPEED = 160 # Pixels/second
 export (int)var bullet_speed = 1000
-var bullet = preload("res://Bullet.tscn")
+var bullet = preload("res://bullet/Bullet.tscn")
 
 func _physics_process(_delta):
 	var motion = Vector2()

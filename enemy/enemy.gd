@@ -7,3 +7,8 @@ func _physics_process(delta):
 	position += (player.position - position) / 50
 	look_at(player.position)
 	move_and_collide(motion)
+
+
+func _on_Area2D_body_entered(body):
+	if "Bullet" in body.name:
+		queue_free()

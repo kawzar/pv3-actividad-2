@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://levels/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://player/player.png" type="Texture" id=4]
 [ext_resource path="res://levels/TileMap.gd" type="Script" id=5]
 [ext_resource path="res://levels/Obstacle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://EnemiesManager.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8.5, 8.5 )
@@ -48,15 +49,6 @@ zoom = Vector2( 0.8, 0.8 )
 process_mode = 0
 smoothing_enabled = true
 
-[node name="Enemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( -190, 89 )
-
-[node name="Enemy3" parent="." instance=ExtResource( 3 )]
-position = Vector2( -111, 429 )
-
-[node name="Enemy2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 431, 89 )
-
 [node name="Obstacle" parent="." instance=ExtResource( 6 )]
 
 [node name="Obstacle2" parent="." instance=ExtResource( 6 )]
@@ -67,5 +59,17 @@ position = Vector2( 416, 120 )
 
 [node name="Obstacle4" parent="." instance=ExtResource( 6 )]
 position = Vector2( -244, 279 )
+
+[node name="EnemiesManager" type="Node2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="Enemy" parent="EnemiesManager" instance=ExtResource( 3 )]
+position = Vector2( -190, 89 )
+
+[node name="Enemy3" parent="EnemiesManager" instance=ExtResource( 3 )]
+position = Vector2( -111, 429 )
+
+[node name="Enemy2" parent="EnemiesManager" instance=ExtResource( 3 )]
+position = Vector2( 431, 89 )
 
 [connection signal="body_entered" from="player/Area2D" to="player" method="_on_Area2D_body_entered"]

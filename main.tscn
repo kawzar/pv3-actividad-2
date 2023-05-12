@@ -50,6 +50,7 @@ process_mode = 0
 smoothing_enabled = true
 
 [node name="Obstacle" parent="." instance=ExtResource( 6 )]
+position = Vector2( 84, 338 )
 
 [node name="Obstacle2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 276, 334 )
@@ -64,12 +65,21 @@ position = Vector2( -244, 279 )
 script = ExtResource( 7 )
 
 [node name="Enemy" parent="EnemiesManager" instance=ExtResource( 3 )]
-position = Vector2( -190, 89 )
+position = Vector2( 254, 60 )
+
+[node name="Enemy5" parent="EnemiesManager" instance=ExtResource( 3 )]
+position = Vector2( 49, 55 )
+
+[node name="Enemy6" parent="EnemiesManager" instance=ExtResource( 3 )]
+position = Vector2( -58, 457 )
 
 [node name="Enemy3" parent="EnemiesManager" instance=ExtResource( 3 )]
-position = Vector2( -111, 429 )
+position = Vector2( -94, 368 )
 
 [node name="Enemy2" parent="EnemiesManager" instance=ExtResource( 3 )]
 position = Vector2( 431, 89 )
+
+[node name="Enemy4" parent="EnemiesManager" instance=ExtResource( 3 )]
+position = Vector2( 380, 138 )
 
 [connection signal="body_entered" from="player/Area2D" to="player" method="_on_Area2D_body_entered"]

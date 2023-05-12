@@ -7,10 +7,9 @@ func _ready():
 	availableEnemies = get_children().size()
 	
 func onEnemyKilled():
-	
+
 	killedEnemies += 1
 	if killedEnemies >= availableEnemies:
-		print("hola")
 		var gameover = Global.GameOverScreen.instance()
 		add_child(gameover)
 

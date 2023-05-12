@@ -29,6 +29,8 @@ script = ExtResource( 5 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 108.528, 242.682 )
+rotation = -1.40608
+scale = Vector2( 0.999998, 0.999998 )
 
 [node name="Sprite" type="Sprite" parent="player"]
 texture = ExtResource( 4 )

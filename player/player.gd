@@ -1,7 +1,9 @@
+tool
 extends KinematicBody2D
 
 export (int)var MOTION_SPEED = 160 # Pixels/second
 export (int)var bullet_speed = 1000
+export (bool)var god_mode = false
 
 func _physics_process(_delta):
 	var motion = Vector2()
@@ -16,8 +18,6 @@ func _physics_process(_delta):
 		motion += Vector2(1, 0)
 	if (Input.is_action_just_pressed("shoot")):
 		fire()
-	if (Input.is_action_just_pressed("ui_cancel")):
-		kill()
 	
 	motion = motion.normalized()*MOTION_SPEED
 	motion = move_and_slide(motion)
@@ -31,9 +31,9 @@ func fire():
 	get_tree().root.call_deferred("add_child", bullet_instance)
 	
 func kill():
-	get_tree().reload_current_scene()
-
-
+	if !Engine.is_editor_hint():
+		if !god_mode:
+			get_tree().reload_current_scene()
 
 func _on_Area2D_body_entered(body):
 	if "Enemy" in body.name:
